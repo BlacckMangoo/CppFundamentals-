@@ -1,6 +1,4 @@
-#ifndef HUFFMANENCODER_H
-#define HUFFMANENCODER_H
-
+#pragma once
 #include <iostream>
 #include <map>
 #include <queue>
@@ -50,4 +48,3 @@ public:
     std::map<char, std::string>& GetCodes() { return codes; }
 };
 
-#endif
