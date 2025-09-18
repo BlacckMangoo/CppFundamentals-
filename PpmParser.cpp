@@ -1,6 +1,6 @@
 #include "PpmParser.h"
 
-std::vector<uint8_t> PpmParser::PpmToRgbData(std::string& filename) {
+std::vector<uint8_t> PpmParser::PpmToRgbData(const std::string& filename) {
 
       std::ifstream file(filename);
     if (!file) throw std::runtime_error("File not found");
