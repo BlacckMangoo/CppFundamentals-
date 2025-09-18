@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-
+#include <cmath>
 class CosineDiscreteTransformer {
     public:
     // they return a vector of size data / 3 merge rgb
@@ -13,6 +13,6 @@ class CosineDiscreteTransformer {
 // input image must be a square
     std::vector<std::vector<int>> SelectCdtSegment( int i , int j , std::vector<int8_t>& data) ;
    // this will be applied on a 8x8 matrix 
-    std::vector<std::vector<int>> CdtApply(std::vector<std::vector<int>>& matrixData);
+    std::vector<std::vector<double>> CdtApply( std::vector<std::vector<int>> matrixData);
 
 };

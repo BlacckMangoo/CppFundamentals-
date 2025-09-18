@@ -23,15 +23,16 @@ int main(){
 
     std::vector<std::vector<int>> matrix = transformer.SelectCdtSegment(1,0,shiftedY);
 
-    for ( auto& i : matrix) {
-        for ( auto& j : i) {
-            std::cout << j << " ";
+    std::vector<std::vector<double>> cdtMatrix = transformer.CdtApply(matrix);
+
+    for ( auto& el: cdtMatrix) {
+        for ( auto& v : el){
+            std::cout << v << " ";
+
 
         }
         std::cout << std::endl;
     }
-
-
 
 
 }

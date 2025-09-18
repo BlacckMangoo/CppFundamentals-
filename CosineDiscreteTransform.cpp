@@ -78,9 +78,28 @@ std::vector<std::vector<int>> CosineDiscreteTransformer::SelectCdtSegment( int i
 
 }
 
-std::vector<std::vector<int>> CosineDiscreteTransformer::CdtApply(std::vector<std::vector<int>>& matrixData) {
-    int blockSize = matrixData.size();
+std::vector<std::vector<double>> CosineDiscreteTransformer::CdtApply( std::vector<std::vector<int>> matrixData) {
+    int N = 8;
+    std::vector<std::vector<double>> result(N, std::vector<double>(N, 0.0));
 
+    for (int u = 0; u < N; u++) {
+        for (int v = 0; v < N; v++) {
+            double alpha = (u == 0) ? std::sqrt(1.0 / N) : std::sqrt(2.0 / N);
+            double beta  = (v == 0) ? std::sqrt(1.0 / N) : std::sqrt(2.0 / N);
 
+            double sum = 0.0;
+
+            for (int x = 0; x < N; x++) {
+                for (int y = 0; y < N; y++) {
+                    sum += matrixData[x][y] *
+                           std::cos(((2 * x + 1) * u *3.14 ) / (2.0 * N)) *
+                           std::cos(((2 * y + 1) * v * 3.14) / (2.0 * N));
+                }
+            }
+
+            result[u][v] = alpha * beta * sum;
+        }
+    }
+
+    return result;
 }
-
